@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  round_id: 
+  body: MyString
+  order: 1
+  guessed: false
+
+two:
+  round_id: 
+  body: MyString
+  order: 1
+  guessed: false

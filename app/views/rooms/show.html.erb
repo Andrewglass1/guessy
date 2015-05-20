@@ -1,0 +1,9 @@
+<h2><%= @active_round.prompt %></h2>
+
+<% @active_round.answers.each do |answer| %>
+  <% if answer.guessed %>
+    <p><%= answer.order %> <%= answer.body %></p>
+  <% else %>
+    <p><%= answer.order %> ???????</p>
+  <% end %>
+<% end %>

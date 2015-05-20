@@ -1,0 +1,18 @@
+<h2>Start a new room:</h2>
+
+<h3>From a topic:</h3>
+
+<% Topic.all.each do |topic| %>
+  <%= link_to topic.prompt, rooms_path(topic_id: topic.id), method: :post %>
+<% end %>
+
+<h3>Make your own!</h3>
+
+<% SuggestedPrompt.all.each do |prompt| %>
+  <%= link_to prompt.body, rooms_path(suggested_prompt_id: prompt.id), method: :post %>
+<% end %>
+
+<%= form_for Room.new do |f| %>
+  <%= text_field_tag :prompt %>
+  <%= f.submit %>
+<% end %>
