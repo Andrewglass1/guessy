@@ -17,10 +17,10 @@
   <% end %>
 <% end %>
 
-<% @round.answers.each do |answer| %>
+<% @round.answers.order(order: :asc).each do |answer| %>
   <% if answer.guessed %>
-    <p><%= answer.order + 1 %> <%= answer.body %></p>
+    <p><%= answer.order %> <%= answer.body %></p>
   <% else %>
-    <p><%= answer.order + 1 %> ???????</p>
+    <p><%= answer.order %> ???????</p>
   <% end %>
 <% end %>

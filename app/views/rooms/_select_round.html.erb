@@ -11,7 +11,7 @@
 <% end %>
 </ul>
 
-<%= form_for Room.new do |f| %>
+<%= form_tag room_rounds_path(@room) do %>
   <%= text_field_tag :prompt %>
-  <%= f.submit %>
+  <%= submit_tag %>
 <% end %>
