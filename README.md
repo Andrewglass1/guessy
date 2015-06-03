@@ -19,9 +19,14 @@
 ### Views/Design mocks
 
 * [ ] Landing/Home -- Create new room or join existing
-* [ ] New Room screen
+* [ ] New Room screen (via topic, sug prompt, or scratch prompt)
 * [ ] Fill in round answers screen (sugg/scratch)
 * [ ] Round / guessing screen
-* [ ] Next round selection
+* [ ] Next round selection -- hopefully reusing new room screen
 
+### TBD
+* [ ] Chat view within room view
+* [ ] Queue a round withing room view
+* [ ] Exit to other rooms within room view
+* [ ] View participants within room view
 * [ ] Invite friends
