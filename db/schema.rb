@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519234420) do
+ActiveRecord::Schema.define(version: 20150603010000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,12 +46,16 @@ ActiveRecord::Schema.define(version: 20150519234420) do
   create_table "rounds", force: :cascade do |t|
     t.string   "prompt"
     t.integer  "room_id"
-    t.string   "state",      default: "pending"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.string   "state",               default: "pending"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "suggested_prompt_id"
+    t.integer  "topic_id"
   end
 
   add_index "rounds", ["room_id"], name: "index_rounds_on_room_id", using: :btree
+  add_index "rounds", ["suggested_prompt_id"], name: "index_rounds_on_suggested_prompt_id", using: :btree
+  add_index "rounds", ["topic_id"], name: "index_rounds_on_topic_id", using: :btree
 
   create_table "suggested_prompts", force: :cascade do |t|
     t.string   "body"
@@ -78,5 +82,7 @@ ActiveRecord::Schema.define(version: 20150519234420) do
   add_foreign_key "answers", "rounds"
   add_foreign_key "messages", "rooms"
   add_foreign_key "rounds", "rooms"
+  add_foreign_key "rounds", "suggested_prompts"
+  add_foreign_key "rounds", "topics"
   add_foreign_key "topic_answers", "topics"
 end

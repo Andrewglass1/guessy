@@ -1,9 +1,26 @@
-<h2><%= @active_round.prompt %></h2>
+<h2><%= @round.prompt %></h2>
 
-<% @active_round.answers.each do |answer| %>
+<% if @round.complete? %>
+  <h3>Congrats, this round is done!</h3>
+  <div>
+    <% if @room.queued_rounds.any? %>
+    <% else %>
+      <%= render partial: "select_round" %>
+    <% end %>
+
+  </div>
+<% else %>
+  <%= form_tag round_guesses_path(@round) do %>
+    <label for="guess">Enter your guess</label>
+    <%= text_field_tag "guess" %>
+    <%= submit_tag %>
+  <% end %>
+<% end %>
+
+<% @round.answers.each do |answer| %>
   <% if answer.guessed %>
-    <p><%= answer.order %> <%= answer.body %></p>
+    <p><%= answer.order + 1 %> <%= answer.body %></p>
   <% else %>
-    <p><%= answer.order %> ???????</p>
+    <p><%= answer.order + 1 %> ???????</p>
   <% end %>
 <% end %>

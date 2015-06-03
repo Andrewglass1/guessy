@@ -16,3 +16,6 @@ t.topic_answers.create(body: "Verdi", order: 4)
 
 SuggestedPrompt.create(body: "Your favorite foods")
 SuggestedPrompt.create(body: "Your favorite breed of Toy Dog")
+
+r = Room.create
+r.create_round_from_topic(t).activate!

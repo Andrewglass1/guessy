@@ -1,0 +1,17 @@
+<p>Choose a new quiz to play again:</p>
+<ul>
+  <%# need to show EITHER prompts that have not been played %>
+  <%# AND Topics that have not been played %>
+  <%# AND Option to start from scratch %>
+  <% @room.recommended_prompts.each do |prompt| %>
+    <li><%= link_to prompt.body, room_rounds_path(@room, suggested_prompt_id: prompt.id), method: :post %></li>
+  <% end %>
+  <% @room.recommended_topics.each do |topic| %>
+    <li><%= link_to topic.prompt, room_rounds_path(@room, topic_id: topic.id), method: :post %></li>
+<% end %>
+</ul>
+
+<%= form_for Room.new do |f| %>
+  <%= text_field_tag :prompt %>
+  <%= f.submit %>
+<% end %>
