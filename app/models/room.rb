@@ -14,6 +14,10 @@ class Room < ActiveRecord::Base
     round
   end
 
+  def to_param
+    slug
+  end
+
   def create_round_from_suggestion(suggestion)
     rounds.create(prompt: suggestion.body, suggested_prompt: suggestion)
   end

@@ -8,9 +8,13 @@
 
 <h3>Make your own!</h3>
 
+<ul>
 <% SuggestedPrompt.all.each do |prompt| %>
+  <li>
   <%= link_to prompt.body, rooms_path(suggested_prompt_id: prompt.id), method: :post %>
+  </li>
 <% end %>
+</ul>
 
 <%= form_for Room.new do |f| %>
   <%= text_field_tag :prompt %>

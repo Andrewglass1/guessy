@@ -15,7 +15,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room         = Room.find(params[:id])
+    @room         = Room.find_by(slug: params[:id])
     @round = @room.current_round
   end
 end

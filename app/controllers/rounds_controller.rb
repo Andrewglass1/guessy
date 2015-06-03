@@ -28,6 +28,6 @@ class RoundsController < ApplicationController
   end
 
   def load_room
-    @room = Room.find(params[:room_id])
+    @room = Room.find_by(slug: params[:room_id])
   end
 end
