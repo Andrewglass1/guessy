@@ -55,6 +55,15 @@ class Room < ActiveRecord::Base
       raise "Somethings wrong"
     end
   end
+
+  def active
+    !!(current_round && current_round.active?)
+  end
+  alias_method :active?, :active
+
+  def as_json(options={})
+    super(options.merge(methods: [:active]))
+  end
 private
 
   def set_slug

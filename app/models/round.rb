@@ -10,6 +10,10 @@ class Round < ActiveRecord::Base
     state == "played"
   end
 
+  def active?
+    state == "active"
+  end
+
   def activate!
     update_attribute(:state, "active")
   end
