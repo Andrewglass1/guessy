@@ -1,18 +1,24 @@
 class GuessesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :load_round
 
   def create
-    if answer = @round.answers.find_by(body: params[:guess], guessed: false)
-      answer.mark_guessed!
-      if @round.complete?
-        flash[:success] = "Congrats, you finished the round!"
-      else
-        flash[:success] = "Congrats, you guessed it! Only #{@round.remaining_answers.count} to go!"
-      end
+    answer = @round.answers.find_by(body: params[:guess], guessed: false)
+    if answer.nil?
+      msg = "Keep Trying Chump!"
     else
-      flash[:success] = "Keep trying, chump."
+      answer.mark_guessed!
+      msg = @round.complete? ? "Congrats you finished!" : "Congrats, you guessed it! Only #{@round.remaining_answers.count} to go!"
     end
-    redirect_to room_path(@round.room)
+    respond_to do |f|
+      f.html do
+        flash[:success] = msg
+        redirect_to room_path(@round.room)
+      end
+      f.json do
+        render json: {room: @round.room, message: msg}
+      end
+    end
   end
 
   def load_round

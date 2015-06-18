@@ -13,6 +13,7 @@ class Round < ActiveRecord::Base
   def active?
     state == "active"
   end
+  alias_method :active, :active?
 
   def activate!
     update_attribute(:state, "active")
@@ -24,5 +25,10 @@ class Round < ActiveRecord::Base
 
   def remaining_answers
     answers.where(guessed: false)
+  end
+
+  def as_json(options = {})
+    opts = {include: [:answers], methods: [:active]}
+    super(options.merge(opts))
   end
 end

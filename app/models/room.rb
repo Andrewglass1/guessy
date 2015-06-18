@@ -62,7 +62,9 @@ class Room < ActiveRecord::Base
   alias_method :active?, :active
 
   def as_json(options={})
-    super(options.merge(methods: [:active]))
+    opts = {methods: [:active, :current_round]
+           }
+    super(options.merge(opts))
   end
 private
 
