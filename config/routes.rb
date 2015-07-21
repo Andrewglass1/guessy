@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :rounds, only: [:edit, :update] do
     resources :guesses, only: [:create]
   end
+  resources :topics, only: [:index]
 end
