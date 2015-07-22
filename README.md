@@ -7,7 +7,10 @@
 * [X] Mark round completed once all answers are guessed
 * [X] Fetch round using slug -- ROOM or ROund?
 * [X] Starting a new round for your room
-
+* [ ] Remove Suggested Prompts
+* [ ] Remove rails html endpoints
+* [ ] Add fuzzy guessing
+* [ ] Add user stuffs
 
 ### User-Persistence Funcionality
 
