@@ -14,6 +14,22 @@ t.topic_answers.create(body: "Andy", order: 2)
 t.topic_answers.create(body: "Ed", order: 3)
 t.topic_answers.create(body: "Verdi", order: 4)
 
+t = Topic.create(prompt: "Andys Favorite Foods")
+
+t.topic_answers.create(body: "Sushi", order: 1)
+t.topic_answers.create(body: "Pizza", order: 2)
+t.topic_answers.create(body: "Calzones", order: 3)
+t.topic_answers.create(body: "Eggs", order: 4)
+
+
+t = Topic.create(prompt: "Horaces Favorite Foods")
+
+t.topic_answers.create(body: "Pesto", order: 1)
+t.topic_answers.create(body: "Sushi", order: 2)
+t.topic_answers.create(body: "Indian", order: 3)
+t.topic_answers.create(body: "Coffee", order: 4)
+
+
 SuggestedPrompt.create(body: "Your favorite foods")
 SuggestedPrompt.create(body: "Your favorite breed of Toy Dog")
 
